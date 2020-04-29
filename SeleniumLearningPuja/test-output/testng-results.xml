@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="12679" started-at="2020-04-29T23:00:13 IST" finished-at="2020-04-29T23:00:25 IST">
+  <suite name="Default suite" duration-ms="11116" started-at="2020-04-29T17:41:59Z" finished-at="2020-04-29T17:42:10Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="12679" started-at="2020-04-29T23:00:13 IST" finished-at="2020-04-29T23:00:25 IST">
+    <test name="Default test" duration-ms="11116" started-at="2020-04-29T17:41:59Z" finished-at="2020-04-29T17:42:10Z">
       <class name="keyboardActivity.KeyBoardActionDemo2">
-        <test-method status="PASS" signature="rightClickDemo()[pri:0, instance:keyboardActivity.KeyBoardActionDemo2@7c29daf3]" name="rightClickDemo" duration-ms="12582" started-at="2020-04-29T23:00:13 IST" finished-at="2020-04-29T23:00:25 IST">
+        <test-method status="PASS" signature="rightClickDemo()[pri:0, instance:keyboardActivity.KeyBoardActionDemo2@6d4b1c02]" name="rightClickDemo" duration-ms="11057" started-at="2020-04-29T17:41:59Z" finished-at="2020-04-29T17:42:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- rightClickDemo -->
