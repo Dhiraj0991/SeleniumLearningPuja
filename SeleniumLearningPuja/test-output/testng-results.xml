@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="12679" started-at="2020-04-29T23:00:13 IST" finished-at="2020-04-29T23:00:25 IST">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="12679" started-at="2020-04-29T23:00:13 IST" finished-at="2020-04-29T23:00:25 IST">
+      <class name="keyboardActivity.KeyBoardActionDemo2">
+        <test-method status="PASS" signature="rightClickDemo()[pri:0, instance:keyboardActivity.KeyBoardActionDemo2@7c29daf3]" name="rightClickDemo" duration-ms="12582" started-at="2020-04-29T23:00:13 IST" finished-at="2020-04-29T23:00:25 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- rightClickDemo -->
+      </class> <!-- keyboardActivity.KeyBoardActionDemo2 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
