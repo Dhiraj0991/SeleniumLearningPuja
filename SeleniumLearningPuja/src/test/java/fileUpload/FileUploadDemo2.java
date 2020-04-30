@@ -17,9 +17,10 @@ public class FileUploadDemo2 extends BaseClass
 	@Test
 	public void fileUpload()
 	{
-		driver.get("https://smallpdf.com/word-to-pdf");
-
-		driver.findElement(By.xpath("//input[@type='file']")).sendKeys("C:\\Users\\592570\\Desktop\\DeletedTool.docx");
+		driver.get("https://www.ilovepdf.com/word_to_pdf");
+		String projectDirectory = System.getProperty("user.dir");
+		String filetoUpload = projectDirectory + "\\DeletedTool.docx";
+		driver.findElement(By.xpath("//input[@type='file']")).sendKeys(filetoUpload);
 
 	}
 
