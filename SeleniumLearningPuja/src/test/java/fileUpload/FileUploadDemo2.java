@@ -17,9 +17,9 @@ public class FileUploadDemo2 extends BaseClass
 	@Test
 	public void fileUpload()
 	{
-		driver.get("https://www.ilovepdf.com/word_to_pdf");
+		driver.get("https://smallpdf.com/word-to-pdf");
 
-		driver.findElement(By.xpath("//*[@id=\"pickfiles\"]/span")).sendKeys("C:\\Users\\Gaurav\\Pictures\\img880.jpg");
+		driver.findElement(By.xpath("//input[@type='file']")).sendKeys("C:\\Users\\592570\\Desktop\\DeletedTool.docx");
 
 	}
 
