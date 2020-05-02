@@ -1,7 +1,6 @@
 package lib;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -20,7 +19,8 @@ public class Utility
 		{
 			TakesScreenshot tS = (TakesScreenshot) driver;
 			File src = tS.getScreenshotAs(OutputType.FILE);
-			String destination = "./Screenshots/"+new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date());
+			String projectDirectory=System.getProperty("user.dir");
+			String destination = projectDirectory+"\\Screenshots\\"+new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date());
 			//String destination = "C:\\Users\\PUJA\\eclipse-workspace\\SeleniumLearning\\Screenshots\\";
 			FileUtils.copyFile(src, new File(destination+screenShotName+".png"));
 			return destination;

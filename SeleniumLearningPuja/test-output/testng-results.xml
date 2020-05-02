@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="20967" started-at="2020-05-02T06:34:02Z" finished-at="2020-05-02T06:34:23Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="20967" started-at="2020-05-02T06:34:02Z" finished-at="2020-05-02T06:34:23Z">
+      <class name="multipleWindow.HandleMultiWindow">
+        <test-method status="PASS" signature="multiWindowHandleDemo()[pri:0, instance:multipleWindow.HandleMultiWindow@5a37d3ed]" name="multiWindowHandleDemo" duration-ms="20904" started-at="2020-05-02T06:34:02Z" finished-at="2020-05-02T06:34:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- multiWindowHandleDemo -->
+      </class> <!-- multipleWindow.HandleMultiWindow -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
