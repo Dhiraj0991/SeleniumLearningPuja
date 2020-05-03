@@ -3,8 +3,6 @@ package excelReadWrite;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-
-import org.apache.log.output.FileOutputLogTarget;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.testng.annotations.Test;
