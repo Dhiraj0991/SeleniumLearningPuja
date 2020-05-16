@@ -1,5 +1,6 @@
 package lib;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -21,8 +22,17 @@ public class BaseClass
 		String browser = "chrome";
 		if (browser.equalsIgnoreCase("chrome"))
 		{
+			
+			String downloadFilePath = "C:\\Users\\dheer\\Desktop\\musicfile";
+
+			HashMap<String, Object> chromepref = new HashMap<String, Object>();
+
+			chromepref.put("profile.default_content_settings.popup", 0);
+			chromepref.put("download.default_directory", downloadFilePath);
+			
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-notifications");
+			options.setExperimentalOption("prefs", chromepref);
 
 // System.setProperty("webdriver.chrome.driver", "chromedriver_79.exe");
 			System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
