@@ -31,4 +31,30 @@ public class Utility
 		}
 		return screenShotName;
 	}
+	
+	
+	public static String captureScreenshotforReport(WebDriver driver, String screenshotName)
+	{
+		int i=0;
+		 TakesScreenshot ts =(TakesScreenshot) driver;
+		 
+		 File source= ts.getScreenshotAs(OutputType.FILE);
+		 
+		 String path= System.getProperty("user.dir")+"/Screenshots/"+new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date())+screenshotName+(++i)+".png";
+		 
+		 File destination=new File(path);
+		 
+		 try
+		 {
+			 Thread.sleep(1000);
+			 FileUtils.copyFile(source, destination);
+		 }
+		 catch (Exception e)
+		 {
+			 System.out.println("There is some error capturing the screenshot"+e.getMessage());
+		 }
+		 
+		 return path;
+	}
+	
 }
