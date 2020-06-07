@@ -20,7 +20,7 @@ public class Utility
 			TakesScreenshot tS = (TakesScreenshot) driver;
 			File src = tS.getScreenshotAs(OutputType.FILE);
 			String projectDirectory=System.getProperty("user.dir");
-			String destination = projectDirectory+"\\Screenshots\\"+new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date());
+			String destination = projectDirectory+"\\Reports\\Screenshots\\"+new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date());
 			//String destination = "C:\\Users\\PUJA\\eclipse-workspace\\SeleniumLearning\\Screenshots\\";
 			FileUtils.copyFile(src, new File(destination+screenShotName+".png"));
 			return destination;
@@ -40,7 +40,7 @@ public class Utility
 		 
 		 File source= ts.getScreenshotAs(OutputType.FILE);
 		 
-		 String path= System.getProperty("user.dir")+"/Screenshots/"+new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date())+screenshotName+(++i)+".png";
+		 String path= System.getProperty("user.dir")+"/Reports/Screenshots/"+new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date())+screenshotName+(++i)+".png";
 		 
 		 File destination=new File(path);
 		 

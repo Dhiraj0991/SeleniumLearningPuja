@@ -28,7 +28,7 @@ public class GoogleSearchTest extends BaseClass
 
 		driver.get("https://www.google.com/");
 
-		driver.findElement(By.name("q")).sendKeys("selenium");
+		driver.findElement(By.name("q123")).sendKeys("selenium");
 		Thread.sleep(3000);
 		List<WebElement> list = driver.findElements(By.xpath("//ul[@role='listbox']//span"));
 
