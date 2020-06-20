@@ -168,6 +168,12 @@
 
 
 
+		<dependency>
+			<groupId>com.assertthat</groupId>
+			<artifactId>selenium-shutterbug</artifactId>
+			<version>0.9</version>
+		</dependency>
+
 
 	</dependencies>
 

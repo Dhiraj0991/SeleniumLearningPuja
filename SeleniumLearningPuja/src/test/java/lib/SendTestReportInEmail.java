@@ -23,15 +23,20 @@ import javax.mail.internet.MimeMultipart;
 public class SendTestReportInEmail
 {
 
+	ZipReportsFolderToSend zip=new ZipReportsFolderToSend();
+	
 	public void send(String from, String tos[], String subject, String text) throws Exception
 	{
 		// Get the session object
+		
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.socketFactory.port", "465");
 		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.port", "465");
+		
+		String projectDirectory=System.getProperty("user.dir");
 
 		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator()
 		{
@@ -62,7 +67,8 @@ public class SendTestReportInEmail
 			// text, "text/html");
 
 			// Set the attachment path
-			String filename = "C:\\Users\\dheer\\Documents\\SeleniumLearningPuja\\SeleniumLearningPuja\\Reports\\ 06-07-2020 12_30 PM Automation Report.html";
+			zip.zipFolder(projectDirectory+"\\Reports", projectDirectory+"\\ReportSentEmail\\Reports.zip");
+			String filename = projectDirectory+"\\ReportSentEmail\\Reports.zip";
 
 			BodyPart objMessageBodyPart = new MimeBodyPart();
 			// Option 3: Send text along with attachment

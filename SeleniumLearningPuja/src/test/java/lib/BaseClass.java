@@ -43,6 +43,8 @@ public class BaseClass
 	public static ExtentTest logger;
 	
 	public JavascriptExecutor js;
+	
+	String concantenate=".";
 
 	@BeforeTest
 	public void startReport()
@@ -53,7 +55,7 @@ public class BaseClass
 		String Updated_Time = dateFormat.format(date);
 
 		htmlReporter = new ExtentHtmlReporter(
-				System.getProperty("user.dir") + "/Reports/ " + Updated_Time +" Automation Report"+ ".html");
+				System.getProperty("user.dir") + "./Reports/ " + Updated_Time +" Automation Report"+ ".html");
 		// Create an object of Extent Reports
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
@@ -175,7 +177,7 @@ public class BaseClass
 		{
 			logger.log(Status.FAIL,MarkupHelper.createLabel(result.getName() + " - Test Case Failed", ExtentColor.RED));
 			logger.log(Status.FAIL,MarkupHelper.createLabel(result.getThrowable() + " - Test Case Failed", ExtentColor.RED));
-			String screenshotPath = Utility.captureScreenshotforReport(driver, result.getName());
+			String screenshotPath = concantenate+Utility.captureScreenshotforReport(driver, result.getName());
 			System.out.println("screenshotPath" + screenshotPath);
 			logger.fail("Test Case Failed Snapshot is below " + logger.addScreenCaptureFromPath(screenshotPath));
 			System.out.println("Begin...GetResult..");

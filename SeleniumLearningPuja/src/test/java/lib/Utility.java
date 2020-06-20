@@ -13,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 
 public class Utility
 {
+	
+	
 	public static String getScreenshot(WebDriver driver,String screenShotName) throws Exception
 	{
 		try
@@ -40,7 +42,7 @@ public class Utility
 		 
 		 File source= ts.getScreenshotAs(OutputType.FILE);
 		 
-		 String path= System.getProperty("user.dir")+"/Reports/Screenshots/"+new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date())+screenshotName+(++i)+".png";
+		 String path= "./Reports/Screenshots/"+new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date())+screenshotName+(++i)+".png";
 		 
 		 File destination=new File(path);
 		 
