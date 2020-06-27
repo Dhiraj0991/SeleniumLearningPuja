@@ -2,6 +2,7 @@ package lib;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,11 +22,14 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
@@ -169,17 +173,27 @@ public class BaseClass
 		js= (JavascriptExecutor) driver;
 	}
 	
+	
+	@BeforeMethod
+	public void createReportTest(Method method)
+	{
+		String descriptiveTestName=method.getAnnotation(Test.class).testName();
+		
+		logger = extent.createTest(descriptiveTestName);
+		
+	}
+	
 	@AfterMethod
 	public void getResult(ITestResult result) throws Exception
 	{
 
 		if (result.getStatus() == ITestResult.FAILURE)
 		{
-			logger.log(Status.FAIL,MarkupHelper.createLabel(result.getName() + " - Test Case Failed", ExtentColor.RED));
+			logger.log(Status.FAIL,MarkupHelper.createLabel(result.getMethod().getDescription() + " - Test Case Failed", ExtentColor.RED));
 			logger.log(Status.FAIL,MarkupHelper.createLabel(result.getThrowable() + " - Test Case Failed", ExtentColor.RED));
-			String screenshotPath = concantenate+Utility.captureScreenshotforReport(driver, result.getName());
+			String screenshotPath = concantenate+Utility.takeDesktopScreenshot(driver, result.getName());
 			System.out.println("screenshotPath" + screenshotPath);
-			logger.fail("Test Case Failed Snapshot is below " + logger.addScreenCaptureFromPath(screenshotPath));
+			logger.fail("Test Case Failed Snapshot is below ", MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
 			System.out.println("Begin...GetResult..");
 		} 
 		else if (result.getStatus() == ITestResult.SKIP)

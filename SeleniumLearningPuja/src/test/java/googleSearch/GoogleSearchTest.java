@@ -18,13 +18,13 @@ public class GoogleSearchTest extends BaseClass
 
 
 	
-	@Test
+	@Test(testName="Google Search Automation Demo", description = "Google Search Automation Demo")
 	public void search() throws Exception
 	{
 
 //		System.setProperty("webdriver.chrome.driver", "chromedriver_80.exe");
 
-		logger = extent.createTest("Smoke test for Applications_1");
+		
 
 		driver.get("https://www.google.com/");
 

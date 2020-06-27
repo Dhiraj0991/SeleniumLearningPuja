@@ -1,9 +1,13 @@
 package lib;
 
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import javax.imageio.ImageIO;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -57,6 +61,20 @@ public class Utility
 		 }
 		 
 		 return path;
+	}
+	
+	public static String takeDesktopScreenshot(WebDriver driver, String screenshotName) throws Exception
+	{
+		int i=0;
+		
+		Rectangle rect= new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+		
+		BufferedImage screenshot=new Robot().createScreenCapture(rect);
+		String path= "./Reports/Screenshots/"+new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date())+screenshotName+(++i)+".png";
+		ImageIO.write(screenshot, "PNG", new File(path));
+		
+		
+		return path;
 	}
 	
 }
