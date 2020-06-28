@@ -1,5 +1,8 @@
 package lib;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.MouseInfo;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
@@ -70,6 +73,13 @@ public class Utility
 		Rectangle rect= new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
 		
 		BufferedImage screenshot=new Robot().createScreenCapture(rect);
+		
+		Image cursor=ImageIO.read(new File("./cursor1.png"));
+		int x=MouseInfo.getPointerInfo().getLocation().x;
+		int y=MouseInfo.getPointerInfo().getLocation().y;
+		
+		Graphics2D graphics2d=screenshot.createGraphics();
+		graphics2d.drawImage(cursor, x, y,15,23, null);
 		String path= "./Reports/Screenshots/"+new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date())+screenshotName+(++i)+".png";
 		ImageIO.write(screenshot, "PNG", new File(path));
 		

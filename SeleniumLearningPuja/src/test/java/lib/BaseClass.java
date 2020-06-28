@@ -20,11 +20,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -36,12 +36,10 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 public class BaseClass
 {
 
-	public static WebDriver driver;
+	public static WebDriver driver=null;
 	public static ExtentHtmlReporter htmlReporter;
 	public static ExtentReports extent;
 	public static ExtentTest logger;
@@ -50,7 +48,7 @@ public class BaseClass
 	
 	String concantenate=".";
 
-	@BeforeTest
+	@BeforeSuite
 	public void startReport()
 	{
 
@@ -88,13 +86,17 @@ public class BaseClass
 		return destination;
 	}
 	
-//	public BaseClass() throws Exception
-//	{
-//
+
+	@Parameters("browserName")
+	@BeforeTest
+	public void setup(String browserName)
+	{
+		
+		System.out.println("Brwoser name is: "+browserName);
 //		String browser = "chrome";
-//		if (browser.equalsIgnoreCase("chrome"))
-//		{
-//			
+		if (browserName.equalsIgnoreCase("chrome"))
+		{
+			
 //			String downloadFilePath = "C:\\Users\\dheer\\Desktop\\musicfile";
 //
 //			HashMap<String, Object> chromepref = new HashMap<String, Object>();
@@ -108,66 +110,27 @@ public class BaseClass
 //
 //// System.setProperty("webdriver.chrome.driver", "chromedriver_79.exe");
 //			System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
-//			WebDriverManager.chromedriver().setup();
+//			System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 //			driver = new ChromeDriver(options);
-//			driver.manage().window().maximize();
-//			driver.manage().deleteAllCookies();
-//			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-//			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-//		}
-//
-//		else if (browser.equalsIgnoreCase("firefox"))
-//		{
-//
-//			WebDriverManager.firefoxdriver().setup();
-//			driver = new FirefoxDriver();
-//
-//			driver.manage().window().maximize();
-//			driver.manage().deleteAllCookies();
-//			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-//		}
-//
-//	}
-	
-	
-	@BeforeSuite
-	public void setup()
-	{
-		
-		String browser = "chrome";
-		if (browser.equalsIgnoreCase("chrome"))
-		{
 			
-			String downloadFilePath = "C:\\Users\\dheer\\Desktop\\musicfile";
-
-			HashMap<String, Object> chromepref = new HashMap<String, Object>();
-
-			chromepref.put("profile.default_content_settings.popup", 0);
-			chromepref.put("download.default_directory", downloadFilePath);
-			
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--disable-notifications");
-			options.setExperimentalOption("prefs", chromepref);
-
-// System.setProperty("webdriver.chrome.driver", "chromedriver_79.exe");
-			System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver(options);
+			System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+			driver=new ChromeDriver();
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		}
 
-		else if (browser.equalsIgnoreCase("firefox"))
+		else if (browserName.equalsIgnoreCase("firefox"))
 		{
 
-			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
+			System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+			driver=new FirefoxDriver();
 
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		}
 		
 		js= (JavascriptExecutor) driver;
@@ -213,18 +176,14 @@ public class BaseClass
 	}
 	
 	@AfterTest
-	public void endReport()
+	public void tearDown() throws Exception
 	{
 		extent.flush();
+		Thread.sleep(10000);
+		driver.quit();
 		
 	}
 	
-	@AfterSuite
-	public void tearDown() throws Exception
-	{
-		Thread.sleep(15000);
-		driver.quit();
-	}
 
 
 }
